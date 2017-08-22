@@ -157,12 +157,12 @@
 
 					if(IPS_InstanceExists(IPS_GetParent($objectid['TargetID']))){
 						//echo "instance";
-						IPS_RequestAction(IPS_GetParent($objectid['TargetID']),IPS_GetObject($objectid['TargetID'])['ObjectIdent'], $status);
+						IPS_RequestAction(IPS_GetParent($objectid['TargetID']),IPS_GetObject($objectid['TargetID'])['ObjectIdent'], $PSS_status);
 					}
 
 					elseif (IPS_ScriptExists(IPS_GetParent($objectid['TargetID']))){
 						//echo "script";
-						IPS_RunScriptWaitEx(IPS_GetParent($objectid['TargetID']), Array("VARIABLE" => $objectid['TargetID'], "VALUE" => $status));
+						IPS_RunScriptWaitEx(IPS_GetParent($objectid['TargetID']), Array("VARIABLE" => $objectid['TargetID'], "VALUE" => $PSS_status));
 					}
 					elseif (IPS_VariableExists($objectid['TargetID'])){
 						//echo "var";
