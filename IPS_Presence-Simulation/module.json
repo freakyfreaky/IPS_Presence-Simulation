@@ -1,0 +1,14 @@
+{
+    "id": "{c4477e02-7ecf-11e7-bb31-be2e44b06b34}",
+    "name": "PresenceSimulation",
+    "type": 3,
+    "vendor": "Andreas Birk",
+    "aliases": 
+    [
+        "Anwesenheits-Simulation"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "PSS"
+}

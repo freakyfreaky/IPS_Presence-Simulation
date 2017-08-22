@@ -1,0 +1,13 @@
+{
+	"elements":
+		[
+			{"type": "Label", 				"label": "Definition des Start- und Endzeitpunktes der Anwesenheitssimulation pro Tag" },
+			{"type": "Label", 				"label": "Format HH:MM" },
+			{"type": "ValidationTextBox",	"name": "PSS_start_time",  "caption": "Start-Zeitpunkt" },
+			{"type": "ValidationTextBox",	"name": "PSS_end_time",  "caption": "End-Zeitpunkt" },
+			{"type": "Label", 				"label": "" },
+			{"type": "Label", 				"label": "Defintion der +/- Toleranz in Minuten mit welcher die Simulation berechnet wird" },
+			{"type": "ValidationTextBox",	"name": "PSS_tolerance_on",  "caption": "+/- Toleranz Start" },
+			{"type": "ValidationTextBox",	"name": "PSS_tolerance_off",  "caption": "+/- Toleranz Ende" },
+		]
+}
