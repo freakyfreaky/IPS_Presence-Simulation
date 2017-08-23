@@ -35,7 +35,7 @@ Der verwendete Namen wird ebenfalls in den Log-Meldung bei Aktivierung und Deakt
 
 ### 4. Einrichten des Moduls in IP-Symcon
 
-Innerhalb der angelegten Instanz müssen anschließend die Start Uhrzeit sowie die End Uhrzeit definiert werden, an welchen die Simulation die Geräte / Variablen schalten und Scripte ausführen soll.
+Innerhalb der angelegten Instanz müssen anschließend die Start Uhrzeit sowie die End Uhrzeit definiert werden, an welchen die Simulation die Geräte / Variablen schalten und Scripte ausführen soll. Eine Simulation über 23:59 ist möglich und Bedarf keiner besonderen Beachtung.
 
 Die Toleranzbereiche dienen der Zufallsberechnung der Start- und Endzeit um eine Answesenheit zu simulieren die nicht einer Routine gleicht.
 Wird innerhalb der Toleranzen 0 angegeben, werden die eingegebene Start und Endzeit verwendet ohne eine Zufallsberechnung.  
@@ -59,7 +59,7 @@ Das Löschen einzelner kann zu Fehlfunktionen führen.
 Name                        | Beschreibung
 --------------------------- | ----------------
 Anwesenheit simulieren?     | Aktiviert oder Deaktiviert die Simulation
-SimulationRefresh           | Zum automatisch berechneten Zeitpunkt werden die Tagesdaten um 00:00:01 für den neuen Tag berechnet.
+SimulationRefresh           | Zum automatisch berechneten Zeitpunkt werden die Timerdaten für den neuen Tag berechnet.
 SimulationTimerOn           | Zum automatisch berechneten Zeitpunkt werden alle Variablen angeschaltet/aktualisiert.
 SimulationTimerOff          | Zum automatisch berechneten Zeitpunkt werden alle Variablen ausgeschaltet/aktualisiert.
 
