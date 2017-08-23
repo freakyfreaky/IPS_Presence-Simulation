@@ -121,7 +121,7 @@ class PresenceSimulation extends IPSModule
         $PSS_rand_time_off = mt_rand($PSS_time_off_min, $PSS_time_off_max);
 
         // Calculate the next RefreshTimer
-        $PSS_refresh_time = $PSS_rand_time_off + 60;
+        $PSS_refresh_time = $PSS_rand_time_off + ($this->ReadPropertyInteger("PSS_tolerance_off") * 60) + 60;
 
         //------------------------- Return all calculated Variables -------------------------
         return array(   'PSS_rand_time_on'  => $PSS_rand_time_on,
