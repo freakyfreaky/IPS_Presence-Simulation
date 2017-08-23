@@ -28,11 +28,8 @@ class PresenceSimulation extends IPSModule
         $this->EnableAction("PSS_active");
         SetValue($this->GetIDForIdent("PSS_active"), false);
         $this->CreateUpdateTimer("SimulationRefresh", 'PSS_SimulationUpdateTimers($_IPS[\'TARGET\']);');
-       	IPS_SetEventActive($this->GetIDForIdent("SimulationRefresh"), false);
         $this->CreateUpdateTimer("SimulationTimerOn", 'PSS_SimulationTimerOn($_IPS[\'TARGET\']);');
-        IPS_SetEventActive($this->GetIDForIdent("SimulationTimerOn"), false);
         $this->CreateUpdateTimer("SimulationTimerOff", 'PSS_SimulationTimerOff($_IPS[\'TARGET\']);');
-        IPS_SetEventActive($this->GetIDForIdent("SimulationTimerOff"), false);
 
         // Create Category
         $this->CreateCategoryByIdent($this->InstanceID, "PSS_targets", "Targets (Simulation)");
@@ -46,7 +43,7 @@ class PresenceSimulation extends IPSModule
 
     }
 
-	// Get and React on Simulationstatus ON / OFF
+    // Get and React on Simulationstatus ON / OFF
     public function RequestAction($Ident, $Value)
     {
         switch ($Ident) {
@@ -58,7 +55,7 @@ class PresenceSimulation extends IPSModule
         }
     }
 
-	// Setup RefreshTimer and the Values for the SimulationTimerOn and SimulationTimerOff
+    // Setup RefreshTimer and the Values for the SimulationTimerOn and SimulationTimerOff
     public function SetupSimulation(bool $SwitchOn)
     {
         if ($SwitchOn) {
@@ -111,26 +108,26 @@ class PresenceSimulation extends IPSModule
 
     private function CalculateRange()
     {
-		// Calculate the ranges of Time ON
+        // Calculate the ranges of Time ON
         $PSS_time_on_min = strtotime($this->ReadPropertyString("PSS_start_time")) - $this->ReadPropertyInteger("PSS_tolerance_on") * 60;
         $PSS_time_on_max = strtotime($this->ReadPropertyString("PSS_start_time")) + $this->ReadPropertyInteger("PSS_tolerance_on") * 60;
 
-		// Calculate the ranges of Time OFF
+        // Calculate the ranges of Time OFF
         $PSS_time_off_min = strtotime($this->ReadPropertyString("PSS_end_time")) - $this->ReadPropertyInteger("PSS_tolerance_off") * 60;
         $PSS_time_off_max = strtotime($this->ReadPropertyString("PSS_end_time")) + $this->ReadPropertyInteger("PSS_tolerance_off") * 60;
 
-		// Calculate a random time betwenn the ranges
+        // Calculate a random time betwenn the ranges
         $PSS_rand_time_on  = mt_rand($PSS_time_on_min, $PSS_time_on_max);
         $PSS_rand_time_off = mt_rand($PSS_time_off_min, $PSS_time_off_max);
 
-		// Calculate the next RefreshTimer
+        // Calculate the next RefreshTimer
         $PSS_refresh_time = $PSS_rand_time_off + 60;
 
-		//------------------------- Return all calculated Variables -------------------------
-        return array(	'PSS_rand_time_on' 	=> $PSS_rand_time_on,
-            			'PSS_rand_time_off' => $PSS_rand_time_off,
-            			'PSS_refresh_time'  => $PSS_refresh_time
-            		);
+        //------------------------- Return all calculated Variables -------------------------
+        return array(   'PSS_rand_time_on'  => $PSS_rand_time_on,
+                        'PSS_rand_time_off' => $PSS_rand_time_off,
+                        'PSS_refresh_time'  => $PSS_refresh_time
+                    );
     }
 
     private function UpdateTargets($PSS_status)
@@ -180,6 +177,7 @@ class PresenceSimulation extends IPSModule
 
         IPS_SetEventCyclic($event_id, 2, 1, 0, 0, 0, 0);
         IPS_SetEventCyclicTimeFrom($event_id, 0, 0, 1);
+        IPS_SetEventActive($event_id, false);
     }
 
     private function CreateCategoryByIdent($id, $ident, $name)
