@@ -26,9 +26,13 @@ class PresenceSimulation extends IPSModule
         // Create needed Events and Variables
         $this->CreateVariableByIdent($this->InstanceID, "PSS_active", "Anwesenheit simulieren?", 0, "~Switch", "Eyes");
         $this->EnableAction("PSS_active");
+        SetValue($this->GetIDForIdent("PSS_active"), false);
         $this->CreateUpdateTimer("SimulationRefresh", 'PSS_SimulationUpdateTimers($_IPS[\'TARGET\']);');
+       	IPS_SetEventActive($this->GetIDForIdent("SimulationRefresh"), false);
         $this->CreateUpdateTimer("SimulationTimerOn", 'PSS_SimulationTimerOn($_IPS[\'TARGET\']);');
+        IPS_SetEventActive($this->GetIDForIdent("SimulationTimerOn"), false);
         $this->CreateUpdateTimer("SimulationTimerOff", 'PSS_SimulationTimerOff($_IPS[\'TARGET\']);');
+        IPS_SetEventActive($this->GetIDForIdent("SimulationTimerOff"), false);
 
         // Create Category
         $this->CreateCategoryByIdent($this->InstanceID, "PSS_targets", "Targets (Simulation)");
